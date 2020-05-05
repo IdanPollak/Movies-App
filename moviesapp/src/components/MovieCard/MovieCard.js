@@ -1,11 +1,20 @@
 import React from "react";
 import styled from "styled-components";
+import {
+   BrowserRouter as Router,
+   Switch,
+   Route,
+   Link,
+   useParams,
+} from "react-router-dom";
 
 const MovieCard = ({ data }) => {
-   console.log(data.poster_path);
+   console.log(`/${data.id}`);
    return (
       <Container img={data.poster_path}>
-         <img src={`http://image.tmdb.org/t/p/w500///${data.poster_path}`} />
+         <Link to={`/${data.id}`}>
+            <img src={`http://image.tmdb.org/t/p/w500///${data.poster_path}`} />
+         </Link>
       </Container>
    );
 };
