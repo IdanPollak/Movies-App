@@ -3,9 +3,12 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import ImageHeader from "../ImageHeader/ImageHeader";
 import styled from "styled-components";
+import ImageBottom from '../ImageBottom/ImageBottom'
+import Actors from "../Actors/Actors";
 
 const MoviePage = () => {
    const [movie, setMovies] = useState();
+   const [cast, setCast] = useState([]);
    const [loading, setLoading] = useState(true);
    const { id } = useParams();
 
@@ -13,13 +16,22 @@ const MoviePage = () => {
       const data = await axios.get(
          `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
       );
-      console.log(data.data);
+      //console.log(data.data);
       setMovies(data.data);
       setLoading(false);
    };
 
+   const fetchCast = async () => {
+      const cast = await axios.get(
+         `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}`
+      );
+      //console.log(cast.data.cast);
+      setCast(cast.data.cast);
+   };
+
    useEffect(() => {
       fetchMovie();
+      fetchCast();
    }, []);
 
    return (
@@ -28,6 +40,8 @@ const MoviePage = () => {
             <>
                <Top>Home / {movie.original_title}</Top>
                <ImageHeader movie={movie} />
+               <ImageBottom movie={movie}/>
+               <Actors movie={movie} cast={cast}/>
             </>
          )}
       </div>

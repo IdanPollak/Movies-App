@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 
 const MovieCard = ({ data }) => {
-   console.log(`/${data.id}`);
+   console.log(`/${data}`);
    return (
       <Container img={data.poster_path}>
          <Link to={`/${data.id}`}>

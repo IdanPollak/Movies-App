@@ -37,6 +37,8 @@ const ImageHeader = ({ movie }) => {
                         <span>{i.name}</span>
                      ))}
                   </p>
+                  <p className="text bold">IMDB RATING</p>
+                  <p className="text">{movie.vote_average}</p>
                   <p className="text bold">DIRECTOR</p>
                   <p className="text bold"></p>
                </div>
@@ -67,7 +69,7 @@ const MovieDetails = styled.div`
       font-family: "Montserrat", sans-serif;
    }
    .text {
-      padding: 1.5em 0 0 3.8em;
+      padding: 1em 0 0 3.8em;
       color: white;
       font-size: 1.2em;
       font-family: "Montserrat", sans-serif;
