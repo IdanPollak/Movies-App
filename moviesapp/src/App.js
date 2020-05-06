@@ -33,7 +33,7 @@ function App() {
          <Router>
          <Header />
             <Switch>
-               <Route path="/"  component={Home} />
+               <Route path="/" exact component={Home} />
                <Route path="/:id" exact component={MoviePage} />
             </Switch>
          </Router>
