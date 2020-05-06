@@ -77,19 +77,26 @@ const MovieDetails = styled.div`
     object-fit: cover;
   }
   h3 {
-    padding: 1.5em 0 0 1.5em;
+    /* padding: 1.5em 0 0 1.5em; */
     color: white;
     font-size: 3em;
     font-family: "Montserrat", sans-serif;
   }
   .text {
-    padding: 1em 0 0 3.8em;
+    /* padding: 1em 0 0 3.8em; */
     color: white;
     font-size: 1.2em;
     font-family: "Montserrat", sans-serif;
-
+    margin:15px 0;
+    line-height: 26px;
+    font-size: 18px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
     span {
-      padding: 0;
+      /* padding: 0; */
     }
   }
   .bold {
@@ -97,18 +104,22 @@ const MovieDetails = styled.div`
   }
 
   .director {
-    padding: 0 10em;
+    /* padding: 0 10em; */
   }
   .no-image {
     background-color: black;
     color: white;
-    width: 100%;
+    width: 200px;
+    min-width: 348px;
     height: 100%;
     object-fit: cover;
     font-size: 3em;
     line-height: 11em;
     display: flex;
     justify-content: center;
+  }
+  .details{
+    padding: 40px;
   }
 `;
 
