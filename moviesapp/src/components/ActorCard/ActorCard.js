@@ -4,7 +4,11 @@ import styled from "styled-components";
 const ActorCard = ({ path, char, name }) => {
   return (
     <Container>
-      <img src={`http://image.tmdb.org/t/p/w154${path}`} />
+      {path ? (
+        <img src={`http://image.tmdb.org/t/p/w154${path}`} />
+      ) : (
+        <div className="no-image">NO IMAGE</div>
+      )}
       <p>
         <div className="name">{name}</div>
         <div className="char">{char}</div>
@@ -37,10 +41,20 @@ const Container = styled.div`
   }
 
   .name {
-  font-size: 1.5em;
+    font-size: 1.5em;
   }
 
   .char {
     margin-top: 1em;
+  }
+  .no-image {
+    background-color: black;
+    color: white;
+    height: 100%;
+    width: 7.5em;
+    font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+   padding-top: 3.5em;
   }
 `;

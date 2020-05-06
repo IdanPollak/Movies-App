@@ -8,15 +8,15 @@ const ImageBottom = ({ movie }) => {
 
   return (
     <Container>
-      <p className="text">Running Time: {Hours + "h " + minutes + "m"}</p>
+      <p className="text"><i class="clock outline icon" style={{fontSize: "larger"}}></i>Running Time: {Hours + "h " + minutes + "m"}</p>
       <p className="text">
-        Budget: $
+      <i className="money bill alternate outline icon" style={{fontSize: "larger"}}></i>Budget: $
         {movie.budget.toLocaleString(navigator.language, {
           minimumFractionDigits: 0,
         })}
       </p>
       <p className="text">
-        Revenue: $
+      <i class="ticket alternate icon" style={{fontSize: "larger"}}></i>Revenue: $
         {movie.revenue.toLocaleString(navigator.language, {
           minimumFractionDigits: 0,
         })}
@@ -37,7 +37,7 @@ const Container = styled.div`
 
   .text {
     margin-left: 0;
-    padding: 2em 2em 2em 12em;
+    padding: 0em 0em 0em 12em;
     font-size: 1.5em;
   }
 `;

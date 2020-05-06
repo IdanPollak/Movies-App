@@ -9,6 +9,7 @@ import Actors from "../Actors/Actors";
 const MoviePage = () => {
    const [movie, setMovies] = useState();
    const [cast, setCast] = useState([]);
+   const [crew, setCrew] = useState([]);
    const [loading, setLoading] = useState(true);
    const { id } = useParams();
 
@@ -27,6 +28,7 @@ const MoviePage = () => {
       );
       //console.log(cast.data.cast);
       setCast(cast.data.cast);
+      setCrew(cast.data.crew);
    };
 
    useEffect(() => {
@@ -39,7 +41,7 @@ const MoviePage = () => {
          {loading ? <h1 style={{fontSize: "3em"}}className="error-header">No Movie Found!</h1> : (
             <>
                <Top>Home / {movie.original_title}</Top>
-               <ImageHeader movie={movie} />
+               <ImageHeader movie={movie} crew={crew} />
                <ImageBottom movie={movie}/>
                <Actors movie={movie} cast={cast}/>
             </>
