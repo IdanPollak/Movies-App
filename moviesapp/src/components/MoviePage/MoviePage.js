@@ -36,7 +36,7 @@ const MoviePage = () => {
 
    return (
       <div>
-         {loading ? null : (
+         {loading ? <h1 style={{fontSize: "3em"}}className="error-header">No Movie Found!</h1> : (
             <>
                <Top>Home / {movie.original_title}</Top>
                <ImageHeader movie={movie} />
@@ -56,4 +56,5 @@ const Top = styled.div`
    padding-left: 12em;
    font-size: 1.5em;
 `;
+
 export default MoviePage;
