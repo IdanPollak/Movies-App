@@ -27,7 +27,11 @@ const ImageHeader = ({ movie, crew }) => {
     <Container img={backdrop_imgSrc}>
       {movie ? (
         <MovieDetails>
-          <img src={poster_imgSrc} />
+          {movie.poster_path ? (
+            <img src={poster_imgSrc} />
+          ) : (
+            <div className="no-image">NO IMAGE</div>
+          )}
           <div className="details">
             <h3>{movie.original_title}</h3>
             <h4 className="text bold">PLOT</h4>
@@ -39,11 +43,17 @@ const ImageHeader = ({ movie, crew }) => {
               ))}
             </p>
             <p className="text bold">IMDB RATING</p>
-            <p className="text"><i class="star outline icon"></i>{movie.vote_average}</p>
+            <p className="text">
+              <i class="star outline icon"></i>
+              {movie.vote_average}
+            </p>
             <p className="text bold">DIRECTOR</p>
             <p className="text">
               {crew.map((i) => (i.job === "Director" ? i.name : null))}
-              <i class="film icon" style={{fontSize: "xx-large",paddingLeft: "1em"}}></i>
+              <i
+                class="film icon"
+                style={{ fontSize: "xx-large", paddingLeft: "1em" }}
+              ></i>
             </p>
           </div>
         </MovieDetails>
@@ -79,7 +89,7 @@ const MovieDetails = styled.div`
     font-family: "Montserrat", sans-serif;
 
     span {
-      padding: 1em;
+      padding: 0;
     }
   }
   .bold {
@@ -88,6 +98,17 @@ const MovieDetails = styled.div`
 
   .director {
     padding: 0 10em;
+  }
+  .no-image {
+    background-color: black;
+    color: white;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    font-size: 3em;
+    line-height: 11em;
+    display: flex;
+    justify-content: center;
   }
 `;
 
@@ -121,9 +142,9 @@ const Container = styled.div`
       margin-bottom: 3em;
       font-size: 1.5em;
     }
-    i{
-       background-color: white;
-       color: white;
+    i {
+      background-color: white;
+      color: white;
     }
   }
 `;

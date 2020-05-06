@@ -9,11 +9,11 @@ import {
 } from "react-router-dom";
 
 const MovieCard = ({ data }) => {
-   console.log(`/${data}`);
+   
    return (
       <Container img={data.poster_path}>
          <Link to={`/${data.id}`}>
-            <img src={`http://image.tmdb.org/t/p/w500///${data.poster_path}`} />
+            {data.poster_path? <img src={`http://image.tmdb.org/t/p/w500///${data.poster_path}`} />: <div className="no-image">NO IMAGE</div>}
          </Link>
       </Container>
    );
@@ -27,6 +27,17 @@ const Container = styled.div`
       width: 100%;
       height: 100%;
    }
+   .no-image {
+    background-color: black;
+    color: white;
+    width: 100%;
+   height: 100%;
+  
+   font-size: 2em;
+    display: flex;
+    justify-content: center;
+    line-height: 12em;
+  }
 `;
 
 export default MovieCard;
