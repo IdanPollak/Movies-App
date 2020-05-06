@@ -33,17 +33,14 @@ const Container = styled.div`
     width: 20em;
     display: flex;
     flex-direction: column;
+    padding: 1em 0 0 1em;
   }
 
   .name {
-    margin-top: 1.5em;
-    font-size: 1.5em;
-    margin-left: 1.5em;
+  font-size: 1.5em;
   }
 
   .char {
-    margin-top: 1.5em;
-    font-size: 1em;
-    margin-left: 2.5em;
+    margin-top: 1em;
   }
 `;

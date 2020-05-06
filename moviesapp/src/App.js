@@ -28,9 +28,10 @@ function App() {
    return (
       <div className="App">
          <GlobalStyle />
-         <Header />
+       
 
          <Router>
+         <Header />
             <Switch>
                <Route path="/" exact component={Home} />
                <Route path="/:id" exact component={MoviePage} />
