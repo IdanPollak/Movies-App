@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
 import MovieCard from "../MovieCard/MovieCard";
 import axios from "axios";
-require("dotenv").config();
+import Context from "../../Context";
 
 const Popular = () => {
+   const context = useContext(Context);
    const [movies, setMovies] = useState([]);
    const [page, setPage] = useState(1);
 
    const loadMore = async () => {
       const data = await axios.get(
          `https://api.themoviedb.org/3/movie/popular?api_key=${
-            process.env.REACT_APP_API_KEY
+            context.KEY
          }&language=en-US&page=${page + 1}`
       );
       setMovies((state) => [...state, ...data.data.results]);
@@ -20,7 +21,7 @@ const Popular = () => {
 
    const fetchData = async () => {
       const data = await axios.get(
-         `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
+         `https://api.themoviedb.org/3/movie/popular?api_key=${context.KEY}&language=en-US&page=1`
       );
       setMovies(data.data.results);
       console.log(data.data.results);

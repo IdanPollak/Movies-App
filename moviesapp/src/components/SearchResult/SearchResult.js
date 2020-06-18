@@ -8,7 +8,7 @@ const SearchResult = () => {
    const [result, setResult] = useState([]);
    const fetchData = async () => {
       const data = await axios.get(
-         `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${context.input}&page=1&include_adult=false`
+         `https://api.themoviedb.org/3/search/movie?api_key=${context.KEY}&language=en-US&query=${context.input}&page=1&include_adult=false`
       );
       setResult(data.data.results);
    };

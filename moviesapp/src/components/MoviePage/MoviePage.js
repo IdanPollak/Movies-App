@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import ImageHeader from "../ImageHeader/ImageHeader";
 import styled from "styled-components";
 import ImageBottom from '../ImageBottom/ImageBottom'
 import Actors from "../Actors/Actors";
+import Context from "../../Context";
 
 const MoviePage = () => {
+   const context = useContext(Context);
    const [movie, setMovies] = useState();
    const [cast, setCast] = useState([]);
    const [crew, setCrew] = useState([]);
@@ -15,7 +17,7 @@ const MoviePage = () => {
 
    const fetchMovie = async () => {
       const data = await axios.get(
-         `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+         `https://api.themoviedb.org/3/movie/${id}?api_key=${context.KEY}&language=en-US`
       );
       //console.log(data.data);
       setMovies(data.data);
@@ -24,7 +26,7 @@ const MoviePage = () => {
 
    const fetchCast = async () => {
       const cast = await axios.get(
-         `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}`
+         `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${context.KEY}`
       );
       //console.log(cast.data.cast);
       setCast(cast.data.cast);
